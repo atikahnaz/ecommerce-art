@@ -7,15 +7,24 @@ export default function ProductInformation({ productid }) {
   //   console.log(data);
   return (
     <>
-      <h4>product information {productid}</h4>
-      <Image
-        src={`/images/product/${product.image}`}
-        width={200}
-        height={200}
-        alt={product.name}
-      />
-      <p>Size</p>
-      <p>Quantity</p>
+      <div className="px-5">
+        <div>
+          <Image
+            src={`/images/product/${product.image}`}
+            width={200}
+            height={200}
+            alt={product.name}
+            className="w-full h-auto py-3"
+          />
+        </div>
+
+        <h4 className="font-medium text-xl py-2">{product.name}</h4>
+        <p>Size</p>
+        <p>Quantity</p>
+        <button className="bg-black text-white w-full py-2 rounded-sm">
+          Add to cart
+        </button>
+      </div>
     </>
   );
 }
