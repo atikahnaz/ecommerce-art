@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "name": "Pink on Yellow",
+    "description": "",
+    "category": "oil painting",
+    "image": "pexels-didsss-2911521.jpg",
+    "variations": [
+      {
+        "size": "S",
+        "price": 45
+      },
+      {
+        "size": "M",
+        "price": 55
+      },
+      {
+        "size": "L",
+        "price": 65
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Flower pai",
+    "description": "",
+    "category": "oil painting",
+    "image": "pexels-eberhardgross-2086361.jpg",
+    "variations": [
+      {
+        "size": "S",
+        "price": 45
+      },
+      {
+        "size": "M",
+        "price": 55
+      },
+      {
+        "size": "L",
+        "price": 65
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Portrait yellow",
+    "description": "",
+    "category": "print",
+    "image": "pexels-elina-araja-1743227-10073856.jpg",
+    "variations": [
+      {
+        "size": "S",
+        "price": 45
+      },
+      {
+        "size": "M",
+        "price": 55
+      },
+      {
+        "size": "L",
+        "price": 65
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Sky Blue",
+    "description": "",
+    "category": ["print", "oil painting"],
+    "image": "pexels-jung-hua-liu-1479622-3063362.jpg",
+    "variations": [
+      {
+        "size": "S",
+        "price": 45
+      },
+      {
+        "size": "M",
+        "price": 55
+      },
+      {
+        "size": "L",
+        "price": 65
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "White and Brown",
+    "description": "",
+    "category": ["print", "oil painting"],
+    "image": "pexels-steve-1000366.jpg",
+    "variations": [
+      {
+        "size": "S",
+        "price": 45
+      },
+      {
+        "size": "M",
+        "price": 55
+      },
+      {
+        "size": "L",
+        "price": 65
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Blue Yellow",
+    "description": "",
+    "category": ["print", "oil painting"],
+    "image": "pexels-steve-1045299.jpg",
+    "variations": [
+      {
+        "size": "S",
+        "price": 45
+      },
+      {
+        "size": "M",
+        "price": 55
+      },
+      {
+        "size": "L",
+        "price": 65
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Blue Red White",
+    "description": "",
+    "category": ["print", "oil painting"],
+    "image": "pexels-steve-1451567.jpg",
+    "variations": [
+      {
+        "size": "S",
+        "price": 45
+      },
+      {
+        "size": "M",
+        "price": 55
+      },
+      {
+        "size": "L",
+        "price": 65
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Gray Building",
+    "description": "",
+    "category": ["print", "oil painting"],
+    "image": "pexels-steve-1570779.jpg",
+    "variations": [
+      {
+        "size": "S",
+        "price": 45
+      },
+      {
+        "size": "M",
+        "price": 55
+      },
+      {
+        "size": "L",
+        "price": 65
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Black and White Oil",
+    "description": "",
+    "category": ["print", "oil painting"],
+    "image": "pexels-steve-1572386.jpg",
+    "variations": [
+      {
+        "size": "S",
+        "price": 45
+      },
+      {
+        "size": "M",
+        "price": 55
+      },
+      {
+        "size": "L",
+        "price": 65
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Fire Blue Yellow",
+    "description": "",
+    "category": ["print", "oil painting"],
+    "image": "pexels-steve-1585325.jpg",
+    "variations": [
+      {
+        "size": "S",
+        "price": 45
+      },
+      {
+        "size": "M",
+        "price": 55
+      },
+      {
+        "size": "L",
+        "price": 65
+      }
+    ]
+  }
+]
