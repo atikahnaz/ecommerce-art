@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CartItems } from "@/context/CartContext";
 
-export default function CartList({ close }) {
-  const [closeCart, setCloseCart] = useState(false);
-
+export default function CartList({ close, className }) {
   const viewCart = () => {
-    //setCloseCart(closeCart === false ? true : false);
     close(false);
   };
 
+  //const cartItems = useContext();
+
   return (
     <>
-      <div className="w-full absolute border bg-red-300 border-red-700 top-0">
+      <div className={` px-2 py-4 bg-white ${className}`}>
         <div>Cart</div>
         <div onClick={viewCart}>Close</div>
+        <div>{useContext(CartItems)}</div>
       </div>
     </>
   );
