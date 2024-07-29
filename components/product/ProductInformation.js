@@ -1,13 +1,18 @@
 "use client";
 import Image from "next/image";
 import data from "../../public/data/products.json";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartItems } from "@/context/CartContext";
 
 export default function ProductInformation({ productid }) {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const product = data.find((item) => item.id == productid);
+  const { items, addItem } = useContext(CartItems);
+
+  console.log(items[0]);
   //   console.log(product);
   //   console.log(data);
+
   return (
     <>
       <div className="px-5">
@@ -37,8 +42,8 @@ export default function ProductInformation({ productid }) {
           <div
             onClick={() => {
               setQuantity((prev) => {
-                if (prev === 0) {
-                  return 0;
+                if (prev === 1) {
+                  return 1;
                 } else {
                   return prev - 1;
                 }
@@ -49,7 +54,10 @@ export default function ProductInformation({ productid }) {
           </div>
         </div>
 
-        <button className="bg-black text-white w-full py-2 rounded-sm">
+        <button
+          onClick={() => addItem(product)}
+          className="bg-black text-white w-full py-2 rounded-sm"
+        >
           Add to cart
         </button>
       </div>
