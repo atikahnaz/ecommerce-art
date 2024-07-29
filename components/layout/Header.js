@@ -5,10 +5,12 @@ import user from "../../public/images/icon/bx-user-circle.svg";
 import cart from "../../public/images/icon/bx-cart.svg";
 import Link from "next/link";
 import CartList from "../cart/CartList";
+import MenuDrop from "./MenuDrop";
 import { useState } from "react";
 
 export default function Header() {
   const [viewCart, setViewCart] = useState(false);
+  const [viewMenu, setViewMenu] = useState(false);
 
   const toggleCart = () => {
     setViewCart(viewCart == false ? true : false);
@@ -18,12 +20,25 @@ export default function Header() {
     setViewCart(false);
   };
 
+  const closeMenu = () => {
+    setViewMenu(false);
+  };
+
   return (
     <>
-      <div className="flex justify-between px-10 py-6">
-        {viewCart && <CartList close={closeCart} />}
+      <div className="flex justify-between px-10 py-6 ">
+        {viewCart && (
+          <CartList close={closeCart} className="w-full absolute top-14" />
+        )}
         <div className="flex items-center">
-          <Image src={menu} alt="menu" className="" />
+          {viewMenu && <MenuDrop close={closeMenu} className="" />}
+
+          <Image
+            onClick={() => setViewMenu(true)}
+            src={menu}
+            alt="menu"
+            className=""
+          />
           <div className="pl-4">
             <Link href="/">ART STORE</Link>
           </div>
