@@ -9,10 +9,6 @@ export default function ProductInformation({ productid }) {
   const product = data.find((item) => item.id == productid);
   const { items, addItem } = useContext(CartItems);
 
-  console.log(items[0]);
-  //   console.log(product);
-  //   console.log(data);
-
   return (
     <>
       <div className="px-5">
@@ -55,7 +51,10 @@ export default function ProductInformation({ productid }) {
         </div>
 
         <button
-          onClick={() => addItem(product)}
+          onClick={() => {
+            addItem(product, quantity);
+            setQuantity(1);
+          }}
           className="bg-black text-white w-full py-2 rounded-sm"
         >
           Add to cart
