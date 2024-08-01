@@ -1,5 +1,5 @@
 "use client";
-import { useState, useContext, createContext } from "react";
+import { useState, useContext, createContext, useEffect } from "react";
 
 //can export more than one function
 
@@ -7,12 +7,18 @@ export const CartItems = createContext();
 
 export const CartProvider = ({ children }) => {
   const [items, setItems] = useState([]); // get items from localstorage
+  const [total, setTotal] = useState();
 
-  // function to add items to cart
-  //const currentItems = items;
-
+  useEffect(() => {
+    const newTotal = items.reduce(
+      (accumulator, currentItem) => accumulator + currentItem.quantity,
+      0
+    );
+    setTotal(newTotal);
+  }, [items]);
   console.log(items);
 
+  // function to add items to cart
   const addItem = (product, quantity) => {
     const itemExist = items.find((item) => item.id == product.id);
     console.log(itemExist);
@@ -32,8 +38,44 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const removeitem = (product) => {
+    const selectedItem = items.find((item) => item.id == product.id);
+
+    if (selectedItem.quantity == 1) {
+      setItems(items.filter((item) => item.id != selectedItem.id));
+    } else {
+      setItems(
+        items.map((item) =>
+          item.id == selectedItem.id
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        )
+      );
+    }
+  };
+
+  const removefromcart = (product) => {
+    const selectedItem = items.find((item) => item.id == product.id);
+    if (selectedItem) {
+      setItems(items.filter((item) => item.id != selectedItem.id));
+    }
+  };
+
+  const clearcart = () => {
+    setItems([]);
+  };
+
   return (
-    <CartItems.Provider value={{ items, addItem }}>
+    <CartItems.Provider
+      value={{
+        items,
+        addItem,
+        removeitem,
+        clearcart,
+        removefromcart,
+        total,
+      }}
+    >
       {children}
     </CartItems.Provider>
   );
