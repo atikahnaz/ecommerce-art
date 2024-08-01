@@ -3,6 +3,8 @@ import Image from "next/image";
 import data from "../../public/data/products.json";
 import { useState, useContext } from "react";
 import { CartItems } from "@/context/CartContext";
+import plus from "../../public/images/icon/bx-plus.svg";
+import minus from "../../public/images/icon/bx-minus.svg";
 
 export default function ProductInformation({ productid }) {
   const [quantity, setQuantity] = useState(1);
@@ -26,15 +28,18 @@ export default function ProductInformation({ productid }) {
         <p>Size</p>
         <p>Quantity</p>
         {/* button for quantity */}
-        <div className="flex">
+        <div className="flex border items-center w-1/3 justify-between">
           <div
+            className=" "
             onClick={() => {
               setQuantity((prev) => prev + 1);
             }}
           >
-            +
+            <Image src={plus} alt="plus" width={15} height={15} />
           </div>
+
           <div>{quantity}</div>
+
           <div
             onClick={() => {
               setQuantity((prev) => {
@@ -46,7 +51,7 @@ export default function ProductInformation({ productid }) {
               });
             }}
           >
-            -
+            <Image src={minus} alt="minus" width={15} height={15} />
           </div>
         </div>
 
