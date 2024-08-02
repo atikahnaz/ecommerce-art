@@ -108,10 +108,26 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const removefromcart = (product) => {
+  const removefromcart = (product, size) => {
     const selectedItem = items.find((item) => item.id == product.id);
     if (selectedItem) {
-      setItems(items.filter((item) => item.id != selectedItem.id));
+      setItems(
+        items.map((item) => {
+          if (item.id == selectedItem.id) {
+            return {
+              ...item,
+              variations: item.variations.map((variation) => {
+                if (variation.size == size) {
+                  return { ...variation, quantity: 0 };
+                }
+                return variation;
+              }),
+            };
+          } else {
+            return item;
+          }
+        })
+      );
     }
   };
 

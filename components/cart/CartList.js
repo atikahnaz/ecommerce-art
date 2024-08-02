@@ -23,33 +23,79 @@ export default function CartList({ close, className }) {
         </div>
 
         <div className=" space-y-4 mb-4">
-          {items.map((item, index) => (
-            <div className="flex border-b-2 ">
-              <Image
-                src={`/images/product/${item.image}`}
-                width={100}
-                height={100}
-                alt={item.name}
-                className="pb-4"
-              />
-              <div className="w-full pl-4 py-2">
-                <div className=" text-lg font-medium" key={index}>
-                  {item.name}
-                </div>
-                <div>Size</div>
+          {items.length > 0
+            ? items.map((item, index) =>
+                item.variations.map((variation) => {
+                  if (variation.quantity) {
+                    return (
+                      <div>
+                        <Image
+                          src={`/images/product/${item.image}`}
+                          width={100}
+                          height={100}
+                          alt={item.name}
+                          className="pb-4"
+                        />
+                        <div className="w-full pl-4 py-2">
+                          <div className=" text-lg font-medium" key={index}>
+                            {item.name}
+                          </div>
+                          <div>{variation.size}</div>
+                          <div>{variation.price}</div>
+                        </div>
 
-                {/* button to edit quantity */}
-                <div className="flex space-x-2">
-                  <div onClick={() => removeitem(item)}> - </div>
-                  <div>{item.quantity}</div>
-                  <div onClick={() => addItem(item, 1)}> + </div>
-                </div>
+                        {/* button to edit quantity */}
+                        <div className="flex space-x-2">
+                          <div onClick={() => removeitem(item)}> - </div>
+                          <div>{variation.quantity}</div>
+                          <div onClick={() => addItem(item, 1, variation.size)}>
+                            {" "}
+                            +{" "}
+                          </div>
+                        </div>
 
-                {/* remove from cart */}
-                <div onClick={() => removefromcart(item)}>Remove</div>
-              </div>
-            </div>
-          ))}
+                        {/* remove from cart */}
+                        <div
+                          onClick={() => removefromcart(item, variation.size)}
+                        >
+                          Remove
+                        </div>
+                      </div>
+                    );
+                  }
+                })
+              )
+            : "Your cart is empty"}
+
+          {/* {items.length > 0
+            ? items.map((item, index) => (
+                <div className="flex border-b-2 ">
+                  <Image
+                    src={`/images/product/${item.image}`}
+                    width={100}
+                    height={100}
+                    alt={item.name}
+                    className="pb-4"
+                  />
+                  <div className="w-full pl-4 py-2">
+                    <div className=" text-lg font-medium" key={index}>
+                      {item.name}
+                    </div>
+                    <div>Size</div> */}
+
+          {/* button to edit quantity */}
+          {/* <div className="flex space-x-2">
+                      <div onClick={() => removeitem(item)}> - </div>
+                      <div>{item.quantity}</div>
+                      <div onClick={() => addItem(item, 1)}> + </div>
+                    </div> */}
+
+          {/* remove from cart */}
+          {/* <div onClick={() => removefromcart(item)}>Remove</div>
+                  </div>
+                </div>
+              ))
+            : "Your cart is empty"} */}
         </div>
         <div className="bg-red-300 ">
           <div onClick={() => clearcart()}>Clear Cart</div>
