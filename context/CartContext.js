@@ -10,31 +10,85 @@ export const CartProvider = ({ children }) => {
   const [total, setTotal] = useState();
 
   useEffect(() => {
-    const newTotal = items.reduce(
-      (accumulator, currentItem) => accumulator + currentItem.quantity,
-      0
-    );
-    setTotal(newTotal);
+    const totalQuantity = items.reduce((total, item) => {
+      const totalItem = item.variations.reduce((sumItem, variation) => {
+        return sumItem + (variation.quantity || 0);
+      }, 0);
+
+      return totalItem + total;
+    }, 0);
+    setTotal(totalQuantity);
   }, [items]);
+
   console.log(items);
 
   // function to add items to cart
-  const addItem = (product, quantity) => {
+  const addItem = (product, quantity, size) => {
     const itemExist = items.find((item) => item.id == product.id);
     console.log(itemExist);
     console.log(quantity);
+    console.log(size);
     if (itemExist) {
-      console.log("items not new");
+      // iterate each item
+      // for each item iterate the variations
+      // find the same size
+      // if size and quantity exist, add quantity
+      // if size but quantity not exist, add new variable quantity
+
       setItems(
-        items.map((item) =>
-          item.id == product.id
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
-        )
+        items.map((item) => {
+          if (item.id == product.id) {
+            return {
+              ...item,
+              variations: item.variations.map((variation) => {
+                if (variation.size == size) {
+                  return {
+                    ...variation,
+                    quantity: (variation.quantity || 0) + quantity, // add quantity if it doesnt exist
+                  };
+                }
+                return variation;
+              }),
+            };
+          }
+          return item;
+        })
       );
+
+      // setItems(
+      //   items.map((item) => {
+      //     return item.variations.map((variation) => {
+      //       variation.size == size && variation.quantity
+      //         ? { ...variation, quantity: variation.quantity + quantity }
+      //         : variation;
+      //     });
+      //   })
+      // );
+      console.log("items not new");
+
+      //before
+      // setItems(
+      //   items.map((item) =>
+      //     item.id == product.id
+      //       ? { ...item, quantity: item.quantity + quantity }
+      //       : item
+      //   )
+      // );
     } else {
       console.log("item new");
-      setItems([...items, { ...product, quantity: quantity }]);
+      //setItems([...items, { ...product, quantity: quantity }]);
+      setItems([
+        ...items,
+        {
+          ...product,
+          variations: product.variations.map((variation) => {
+            if (variation.size == size) {
+              return { ...variation, quantity: quantity };
+            }
+            return variation;
+          }),
+        },
+      ]);
     }
   };
 
