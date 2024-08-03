@@ -6,13 +6,19 @@ export default function MenuDrop({ close }) {
   };
   return (
     <>
-      <div className="bg-white absolute space-y-3 w-full py-5 top-0 pl-5 left-0">
+      <div className="bg-white absolute shadow-xl space-y-3 w-full py-5 top-0 pl-5 left-0 z-30 ">
         <div>
-          <Link href="/collection">Collection</Link>
+          <Link href="/collection">
+            <div onClick={closeMenu} className="">
+              Collection
+            </div>
+          </Link>
         </div>
         <div>Gallery</div>
         <div>My Orders</div>
-        <div onClick={closeMenu}>Close</div>
+        <div className="cursor-pointer" onClick={closeMenu}>
+          Close
+        </div>
       </div>
     </>
   );
