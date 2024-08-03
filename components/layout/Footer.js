@@ -2,6 +2,7 @@ import Image from "next/image";
 import whatsapp from "../../public/images/icon/bxl-whatsapp.svg";
 import twitter from "../../public/images/icon/bxl-twitter.svg";
 import instagram from "../../public/images/icon/bxl-instagram.svg";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -15,13 +16,15 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="px-5 text-sm ">
-        <h6>About Us</h6>
-        <h6>Terms and Conditions</h6>
-        <h6>Shipment</h6>
-        <h6>Order</h6>
-        <h6>Contact Us</h6>
-      </div>
+      <Link href="/AboutUs">
+        <div className="px-5 text-sm">
+          <h6>About Us</h6>
+          <h6>Terms and Conditions</h6>
+          <h6>Shipment</h6>
+          <h6>Order</h6>
+          <h6>Contact Us</h6>
+        </div>
+      </Link>
     </div>
   );
 }
