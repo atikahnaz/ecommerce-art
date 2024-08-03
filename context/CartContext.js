@@ -92,18 +92,44 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const removeitem = (product) => {
-    const selectedItem = items.find((item) => item.id == product.id);
+  const removeitem = (product, quantity, size) => {
+    // const selectedItem = items.find((item) => item.id == product.id);
 
-    if (selectedItem.quantity == 1) {
-      setItems(items.filter((item) => item.id != selectedItem.id));
-    } else {
+    // if (selectedItem.quantity == 1) {
+    //   setItems(items.filter((item) => item.id != selectedItem.id));
+    // } else {
+    //   setItems(
+    //     items.map((item) =>
+    //       item.id == selectedItem.id
+    //         ? { ...item, quantity: item.quantity - 1 }
+    //         : item
+    //     )
+    //   );
+    // }
+
+    const itemExist = items.find((item) => item.id == product.id);
+    console.log(itemExist);
+    console.log(quantity);
+    console.log(size);
+    if (itemExist) {
       setItems(
-        items.map((item) =>
-          item.id == selectedItem.id
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        )
+        items.map((item) => {
+          if (item.id == product.id) {
+            return {
+              ...item,
+              variations: item.variations.map((variation) => {
+                if (variation.size == size) {
+                  return {
+                    ...variation,
+                    quantity: (variation.quantity || 0) - quantity, // add quantity if it doesnt exist
+                  };
+                }
+                return variation;
+              }),
+            };
+          }
+          return item;
+        })
       );
     }
   };
