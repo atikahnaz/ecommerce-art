@@ -34,7 +34,7 @@ export default function Header({ className }) {
         {viewCart && (
           <CartList
             close={closeCart}
-            className="w-5/6 absolute top-14 right-1 max-h-screen  overflow-y-scroll"
+            className="w-5/6 absolute top-14 right-1 h-[calc(100vh-4rem)]  overflow-y-scroll"
           />
         )}
         <div className="flex items-center">
@@ -44,7 +44,7 @@ export default function Header({ className }) {
             onClick={() => setViewMenu(true)}
             src={menu}
             alt="menu"
-            className=""
+            className="cursor-pointer"
           />
           <div className="pl-4">
             <Link href="/">ART STORE</Link>
@@ -54,8 +54,13 @@ export default function Header({ className }) {
           <div className="pr-4">
             <Image src={user} alt="user" />
           </div>
-          <div className=" relative">
-            <Image src={cart} alt="cart" onClick={toggleCart} />
+          <div className=" relative ">
+            <Image
+              src={cart}
+              alt="cart"
+              onClick={toggleCart}
+              className="cursor-pointer"
+            />
             <div className="absolute -top-2 -right-1 text-xs px-1 rounded-full bg-red-300">
               {total}
             </div>
