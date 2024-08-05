@@ -40,10 +40,10 @@ export default function Home() {
             <Link href="/collection">Collection</Link>
           </h1>
 
-          <div className="flex flex-wrap">
+          <div className="flex justify-between flex-wrap h-full">
             {products.slice(0, 4).map((product, index) => {
               return (
-                <div className="w-1/2 pr-2 pb-5">
+                <div key={index} className="w-1/2 pb-5">
                   <ProductCard product={product} />
                 </div>
               );
