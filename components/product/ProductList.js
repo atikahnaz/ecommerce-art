@@ -11,9 +11,9 @@ export default function ProductList({ products }) {
         })} */}
       </div>
 
-      <div className="flex flex-wrap">
-        {products.map((product) => (
-          <div className="w-1/2">
+      <div className="flex flex-wrap ">
+        {products.map((product, index) => (
+          <div key={index} className="w-1/2">
             <ProductCard product={product} />
           </div>
         ))}
