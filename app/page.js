@@ -49,6 +49,9 @@ export default function Home() {
               );
             })}
           </div>
+          <Link href="/collection">
+            <div className="text-end pr-9">More</div>
+          </Link>
         </section>
       </section>
     </main>

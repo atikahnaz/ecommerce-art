@@ -6,7 +6,7 @@ import x from "../../public/images/icon/bx-x.svg";
 import Link from "next/link";
 
 export default function CartList({ close, className }) {
-  const { items, removeitem, clearcart, addItem, removefromcart } =
+  const { items, removeitem, clearcart, addItem, removefromcart, total } =
     useContext(CartItems);
   const viewCart = () => {
     close(false);
@@ -112,15 +112,20 @@ export default function CartList({ close, className }) {
             : "Your cart is empty"} */}
         </div>
         <div className=" px-4 py-4  bg-white w-full sticky bottom-0">
-          <div onClick={() => clearcart()}>Clear Cart</div>
-          <Link href="/Checkout">
-            <div
-              className="bg-black mt-5 text-white text-center py-2 rounded-md"
-              onClick={viewCart}
-            >
-              Checkout
-            </div>
-          </Link>
+          {total > 0 && (
+            <>
+              <div onClick={() => clearcart()}>Clear Cart</div>
+
+              <Link href="/Checkout">
+                <div
+                  className="bg-black mt-5 text-white text-center py-2 rounded-md"
+                  onClick={viewCart}
+                >
+                  Checkout
+                </div>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </>
