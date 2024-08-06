@@ -34,7 +34,7 @@ export default function Header({ className }) {
         {viewCart && (
           <CartList
             close={closeCart}
-            className="w-5/6 absolute top-14 right-1 h-[calc(100vh-4rem)]  overflow-y-scroll"
+            className="w-5/6 absolute top-14 right-1 max-h-[calc(100vh-4rem)]  overflow-y-scroll"
           />
         )}
         <div className="flex items-center">
@@ -61,9 +61,11 @@ export default function Header({ className }) {
               onClick={toggleCart}
               className="cursor-pointer"
             />
-            <div className="absolute -top-2 -right-1 text-xs px-1 rounded-full bg-red-300">
-              {total}
-            </div>
+            {total > 0 && (
+              <div className="absolute -top-2 -right-1 text-xs px-1 rounded-full bg-red-300">
+                {total}
+              </div>
+            )}
           </div>
         </div>
       </div>
