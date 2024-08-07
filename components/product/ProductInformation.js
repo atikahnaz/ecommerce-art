@@ -16,8 +16,8 @@ export default function ProductInformation({ productid }) {
 
   return (
     <>
-      <div className="px-5 ">
-        <div>
+      <div className="px-5 sm:px-10 md:flex lg:px-24 lg:justify-center">
+        <div className="md:w-1/3 md:px-10">
           <Image
             src={`/images/product/${product.image}`}
             width={200}
@@ -27,63 +27,65 @@ export default function ProductInformation({ productid }) {
           />
         </div>
 
-        <h4 className="font-medium text-xl py-2">{product.name}</h4>
+        <div className=" md:w-1/2 md:px-8 ">
+          <h4 className="font-medium text-xl py-2">{product.name}</h4>
 
-        <div>Size</div>
-        <div className=""></div>
+          <div>Size</div>
+          <div className=""></div>
 
-        {product.variations.map((item) => {
-          return (
+          {product.variations.map((item) => {
+            return (
+              <div
+                onClick={() => setSize(item.size)}
+                className={`flex justify-between w-1/2 border px-3 py-2 cursor-pointer rounded my-2 ${
+                  size == item.size ? "bg-black text-white" : "bg-white"
+                }`}
+              >
+                <div>{item.size}</div>
+                <div>{"$ " + item.price}</div>
+                {console.log(size)}
+              </div>
+            );
+          })}
+
+          <p className="py-3">Quantity</p>
+          {/* button for quantity */}
+          <div className="flex cursor-pointer border items-center w-full lg:w-1/2 justify-between py-1 rounded px-4">
             <div
-              onClick={() => setSize(item.size)}
-              className={`flex justify-between w-1/2 border px-3 py-2 rounded my-2 ${
-                size == item.size ? "bg-black text-white" : "bg-white"
-              }`}
+              onClick={() => {
+                setQuantity((prev) => {
+                  if (prev === 1) {
+                    return 1;
+                  } else {
+                    return prev - 1;
+                  }
+                });
+              }}
             >
-              <div>{item.size}</div>
-              <div>{"$ " + item.price}</div>
-              {console.log(size)}
+              <Image src={minus} alt="minus" width={15} height={15} />
             </div>
-          );
-        })}
+            <div>{quantity}</div>
 
-        <p className="py-3">Quantity</p>
-        {/* button for quantity */}
-        <div className="flex border items-center w-full justify-between py-1 rounded px-4">
-          <div
-            onClick={() => {
-              setQuantity((prev) => {
-                if (prev === 1) {
-                  return 1;
-                } else {
-                  return prev - 1;
-                }
-              });
-            }}
-          >
-            <Image src={minus} alt="minus" width={15} height={15} />
+            <div
+              className=" "
+              onClick={() => {
+                setQuantity((prev) => prev + 1);
+              }}
+            >
+              <Image src={plus} alt="plus" width={15} height={15} />
+            </div>
           </div>
-          <div>{quantity}</div>
 
-          <div
-            className=" "
+          <button
             onClick={() => {
-              setQuantity((prev) => prev + 1);
+              addItem(product, quantity, size);
+              setQuantity(1);
             }}
+            className="bg-black cursor-pointer text-white w-full lg:w-1/2 py-2 rounded-sm my-5"
           >
-            <Image src={plus} alt="plus" width={15} height={15} />
-          </div>
+            Add to cart
+          </button>
         </div>
-
-        <button
-          onClick={() => {
-            addItem(product, quantity, size);
-            setQuantity(1);
-          }}
-          className="bg-black text-white w-full py-2 rounded-sm my-5"
-        >
-          Add to cart
-        </button>
       </div>
     </>
   );

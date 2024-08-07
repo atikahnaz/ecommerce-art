@@ -2,11 +2,11 @@ export default function Footer() {
   return (
     <div className="px-8 py-6 space-y-5">
       <div>
-        <h4 className="text-lg">About Us</h4>
+        <h4 className="text-lg font-bold">About Us</h4>
         <p className="text-sm">
           Our Story:<br></br> Welcome to Art Store! We are passionate about
           bringing beautiful, high-quality art prints to your home and office.
-          Founded in [Year], our mission is to make art accessible to everyone.
+          Founded in 2024, our mission is to make art accessible to everyone.
           Our collection features works from both emerging and established
           artists.<br></br> Our Vision:<br></br> We believe that art has the
           power to transform spaces and inspire people. Our vision is to create
@@ -18,7 +18,7 @@ export default function Footer() {
       </div>
 
       <div>
-        <h4 className="text-lg">Terms and Conditions</h4>
+        <h4 className="text-lg font-bold">Terms and Conditions</h4>
         <p className="text-sm">
           These terms and conditions outline the rules and regulations for the
           use of our website.<br></br> Agreement to Terms:<br></br> By accessing
@@ -34,7 +34,7 @@ export default function Footer() {
       </div>
 
       <div>
-        <h4 className="text-lg">Shipment</h4>
+        <h4 className="text-lg font-bold">Shipment</h4>
         <p className="text-sm">
           Shipping Policy:<br></br> We aim to process and ship all orders within
           2-3 business days. Delivery times may vary depending on your location.
@@ -50,7 +50,7 @@ export default function Footer() {
       </div>
 
       <div>
-        <h4 className="text-lg">Order</h4>
+        <h4 className="text-lg font-bold">Order</h4>
         <p className="text-sm">
           Placing an Order:<br></br> Browse our collection and add your desired
           items to the cart. When you are ready to purchase, proceed to the
@@ -65,7 +65,7 @@ export default function Footer() {
       </div>
 
       <div>
-        <h4 className="text-lg">Contact Us</h4>
+        <h4 className="text-lg font-bold">Contact Us</h4>
         <p className="text-sm">
           Customer Support:<br></br> We are here to help! If you have any
           questions or concerns, please contact our customer support team.{" "}

@@ -15,10 +15,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${lora.className} flex flex-col min-h-screen`}>
+      <body className={`${lora.className} flex flex-col min-h-screen  `}>
         <CartProvider>
           <Header className="fixed" />
-          <main className="flex-grow pt-20">{children}</main>
+          <main className="flex-grow pt-20 md:pt-28">{children}</main>
           <Footer />
         </CartProvider>
       </body>

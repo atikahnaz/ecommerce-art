@@ -6,7 +6,7 @@ export default function MenuDrop({ close }) {
   };
   return (
     <>
-      <div className="bg-white absolute shadow-xl space-y-3 w-full py-5 top-0 pl-5 left-0 z-30 ">
+      <div className="bg-white absolute md:hidden shadow-xl space-y-3 m-4  w-full py-5 top-0 pl-5 left-0 z-30 ">
         <div>
           <Link href="/collection">
             <div onClick={closeMenu} className="">

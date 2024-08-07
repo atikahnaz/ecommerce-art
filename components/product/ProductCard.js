@@ -11,9 +11,9 @@ export default function ProductCard({ product }) {
     <>
       <div
         id="card-container"
-        className=" px-4 py-6 h-full shadow-lg flex flex-col justify-between"
+        className=" px-4 lg:px-10 py-6 h-full lg:mb-8 shadow-lg flex flex-col justify-between"
       >
-        <div className="">
+        <div className="flex-1 p-2 flex items-center bg-slate-100">
           <Link href={`/product/${product.id}`}>
             <Image
               src={`/images/product/${product.image}`}
@@ -25,12 +25,12 @@ export default function ProductCard({ product }) {
           </Link>
         </div>
 
-        <div className="text-sm space-y-2">
+        <div className="text-sm space-y-2 pt-2">
           <p className="font-medium">{product.name}</p>
-          <div className="flex justify-between">
+          <div className="flex justify-between pt-2">
             <div>
-              <p>{product.variations[0].size}</p>
-              <p>${product.variations[0].price}</p>
+              <p>Size {product.variations[0].size}</p>
+              <p>From ${product.variations[0].price}</p>
             </div>
 
             <Image

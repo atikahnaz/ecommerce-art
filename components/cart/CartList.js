@@ -16,7 +16,9 @@ export default function CartList({ close, className }) {
 
   return (
     <>
-      <div className={` shadow-lg pt-4 bg-slate-50  ${className}`}>
+      <div
+        className={` shadow-lg pt-4 bg-slate-50 md:w-1/2 lg:w-1/3 z-20  ${className}`}
+      >
         <div className="flex justify-between items-center ">
           <div className="py-4 px-4 font-semibold text-lg">Cart</div>
           <div className="cursor-pointer" onClick={viewCart}>
@@ -39,12 +41,12 @@ export default function CartList({ close, className }) {
                           className="pb-4"
                         />
 
-                        <div className="px-4 w-2/3">
+                        <div className="px-4 w-2/3 flex flex-col">
                           <div className="w-full  py-2">
                             <div className=" text-lg font-medium" key={index}>
                               {item.name}
                             </div>
-                            <div>{variation.size}</div>
+                            <div className="pt-2">{variation.size}</div>
                             <div>$ {variation.price}</div>
                           </div>
 
@@ -69,6 +71,7 @@ export default function CartList({ close, className }) {
 
                           {/* remove from cart */}
                           <div
+                            className=" flex-1 content-end text-end pt-2 text-sm cursor-pointer"
                             onClick={() => removefromcart(item, variation.size)}
                           >
                             Remove
@@ -114,7 +117,9 @@ export default function CartList({ close, className }) {
         <div className=" px-4 py-4  bg-white w-full sticky bottom-0">
           {total > 0 && (
             <>
-              <div onClick={() => clearcart()}>Clear Cart</div>
+              <div className="cursor-pointer" onClick={() => clearcart()}>
+                Clear Cart
+              </div>
 
               <Link href="/Checkout">
                 <div

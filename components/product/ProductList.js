@@ -13,7 +13,7 @@ export default function ProductList({ products }) {
 
       <div className="flex flex-wrap ">
         {products.map((product, index) => (
-          <div key={index} className="w-1/2">
+          <div key={index} className="w-1/2 md:w-1/4 lg:p-5">
             <ProductCard product={product} />
           </div>
         ))}

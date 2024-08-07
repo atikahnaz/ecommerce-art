@@ -29,7 +29,7 @@ export default function Header({ className }) {
   return (
     <>
       <div
-        className={`flex justify-between w-screen px-10 py-6 bg-white ${className} `}
+        className={`flex justify-between w-screen px-10 py-6 md:py-10 md:pr-16 lg:pr-36 bg-white ${className} `}
       >
         {viewCart && (
           <CartList
@@ -37,16 +37,24 @@ export default function Header({ className }) {
             className="w-5/6 absolute top-14 right-1 max-h-[calc(100vh-4rem)]  overflow-y-scroll"
           />
         )}
-        <div className="flex items-center">
+        <div className="flex items-center space-x-5">
           {viewMenu && <MenuDrop close={closeMenu} className="" />}
 
           <Image
             onClick={() => setViewMenu(true)}
             src={menu}
             alt="menu"
-            className="cursor-pointer"
+            className="cursor-pointer md:hidden"
           />
-          <div className="pl-4">
+          <div className="hidden md:flex space-x-5 font-medium text-lg">
+            <Link href="/collection">
+              <div>Collection</div>
+            </Link>
+
+            <div>Gallery</div>
+          </div>
+
+          <div className="pl-4 md:text-xl">
             <Link href="/">ART STORE</Link>
           </div>
         </div>
@@ -54,12 +62,12 @@ export default function Header({ className }) {
           <div className="pr-4">
             <Image src={user} alt="user" />
           </div>
-          <div className=" relative ">
+          <div className=" relative">
             <Image
               src={cart}
               alt="cart"
               onClick={toggleCart}
-              className="cursor-pointer"
+              className="cursor-pointer relative"
             />
             {total > 0 && (
               <div className="absolute -top-2 -right-1 text-xs px-1 rounded-full bg-red-300">

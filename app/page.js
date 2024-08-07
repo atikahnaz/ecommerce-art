@@ -29,7 +29,7 @@ export default function Home() {
 
         <section>
           <h1 className=" text-lg font-medium py-2">Ideas For You</h1>
-          <div>
+          <div className="">
             <Image src={pic1} alt="idea1" />
             <Image src={pic2} alt="idea2" />
           </div>
@@ -43,7 +43,7 @@ export default function Home() {
           <div className="flex justify-between flex-wrap h-full">
             {products.slice(0, 4).map((product, index) => {
               return (
-                <div key={index} className="w-1/2 pb-5">
+                <div key={index} className="w-1/2 md:w-1/4 pb-5">
                   <ProductCard product={product} />
                 </div>
               );
