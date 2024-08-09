@@ -29,7 +29,7 @@ export default function Header({ className }) {
   return (
     <>
       <div
-        className={`flex justify-between w-screen px-10 py-6 md:py-10 md:pr-16 lg:pr-36 bg-white ${className} `}
+        className={`flex z-40 justify-between w-screen px-10 py-8 md:py-10 md:pr-16 lg:pr-36 bg-white ${className} `}
       >
         {viewCart && (
           <CartList
@@ -46,7 +46,7 @@ export default function Header({ className }) {
             alt="menu"
             className="cursor-pointer md:hidden"
           />
-          <div className="hidden md:flex space-x-5 font-medium text-lg">
+          <div className="hidden md:flex space-x-5 font-normal text-lg">
             <Link href="/collection">
               <div>Collection</div>
             </Link>
@@ -59,8 +59,10 @@ export default function Header({ className }) {
           </div>
         </div>
         <div className="flex items-center">
-          <div className="pr-4">
-            <Image src={user} alt="user" />
+          <div className="pr-4 md:pr-8">
+            <Link href="/profile">
+              <Image src={user} alt="user" />
+            </Link>
           </div>
           <div className=" relative">
             <Image
@@ -70,7 +72,7 @@ export default function Header({ className }) {
               className="cursor-pointer relative"
             />
             {total > 0 && (
-              <div className="absolute -top-2 -right-1 text-xs px-1 rounded-full bg-red-300">
+              <div className="absolute -top-2 -right-1 text-xs w-4 h-4 rounded-full text-center bg-red-300">
                 {total}
               </div>
             )}
