@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Signup() {
@@ -10,6 +11,8 @@ export default function Signup() {
     email: "",
     pwd: "",
   });
+
+  const router = useRouter();
 
   const handleChangeForm = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -27,7 +30,17 @@ export default function Signup() {
           body: JSON.stringify(form),
         }
       );
+      const data = await response.json();
+      console.log(data);
       console.log("Signup");
+
+      const messageBox = document.getElementById("message");
+      messageBox.textContent = data.name + data.email;
+
+      console.log(data.status);
+      console.log(data.message);
+
+      router.push("/");
     } catch (error) {
       console.log("error occured:", error);
     }
@@ -36,6 +49,7 @@ export default function Signup() {
   return (
     <>
       <div className="max-w-96 my-10 mt-8 mx-auto">
+        <div id="message"></div>
         <div className="m-5">Sign up</div>
         <form onSubmit={handleSignUp} className="mx-5 space-y-4">
           <input
