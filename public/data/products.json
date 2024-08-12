@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Pink on Yellow",
-    "description": "",
+    "description": "A vibrant oil painting featuring a striking contrast of pink hues against a bold yellow background. This piece brings warmth and energy to any space.",
     "category": "oil painting",
     "image": "pexels-didsss-2911521.jpg",
     "variations": [
@@ -22,8 +22,8 @@
   },
   {
     "id": 2,
-    "name": "Flower pai",
-    "description": "",
+    "name": "Flower paint",
+    "description": "A delicate and elegant oil painting that captures the beauty of flowers in full bloom. Ideal for adding a touch of nature to your home.",
     "category": "oil painting",
     "image": "pexels-eberhardgross-2086361.jpg",
     "variations": [
@@ -44,7 +44,7 @@
   {
     "id": 3,
     "name": "Portrait yellow",
-    "description": "",
+    "description": " A modern print that blends abstract forms with a rich yellow palette, perfect for those who appreciate contemporary art with a bold twist.",
     "category": "print",
     "image": "pexels-elina-araja-1743227-10073856.jpg",
     "variations": [
@@ -65,7 +65,7 @@
   {
     "id": 4,
     "name": "Sky Blue",
-    "description": "",
+    "description": "A versatile artwork that can be displayed as either a print or oil painting. The soothing sky blue tones make this piece a calming addition to any room.",
     "category": ["print", "oil painting"],
     "image": "pexels-jung-hua-liu-1479622-3063362.jpg",
     "variations": [
@@ -86,7 +86,7 @@
   {
     "id": 5,
     "name": "White and Brown",
-    "description": "",
+    "description": "A sophisticated artwork combining the simplicity of white with the richness of brown. This piece is available as both a print and an oil painting, offering timeless elegance.",
     "category": ["print", "oil painting"],
     "image": "pexels-steve-1000366.jpg",
     "variations": [
@@ -107,7 +107,7 @@
   {
     "id": 6,
     "name": "Blue Yellow",
-    "description": "",
+    "description": "A captivating artwork that merges cool blue with vibrant yellow, creating a dynamic visual experience. Perfect as a print or oil painting.",
     "category": ["print", "oil painting"],
     "image": "pexels-steve-1045299.jpg",
     "variations": [
@@ -128,7 +128,7 @@
   {
     "id": 7,
     "name": "Blue Red White",
-    "description": "",
+    "description": "An eye-catching piece that uses the powerful combination of blue, red, and white. This artwork is available in both print and oil painting formats, adding a pop of color to your decor.",
     "category": ["print", "oil painting"],
     "image": "pexels-steve-1451567.jpg",
     "variations": [
@@ -149,7 +149,7 @@
   {
     "id": 8,
     "name": "Gray Building",
-    "description": "",
+    "description": "A minimalist depiction of a building in gray tones. This artwork is perfect for urban art lovers and is available in both print and oil painting versions.",
     "category": ["print", "oil painting"],
     "image": "pexels-steve-1570779.jpg",
     "variations": [
@@ -170,7 +170,7 @@
   {
     "id": 9,
     "name": "Black and White Oil",
-    "description": "",
+    "description": "A monochromatic masterpiece that emphasizes the depth and texture of oil paint. This piece is perfect for a modern, sleek aesthetic.",
     "category": ["print", "oil painting"],
     "image": "pexels-steve-1572386.jpg",
     "variations": [
@@ -191,7 +191,7 @@
   {
     "id": 10,
     "name": "Fire Blue Yellow",
-    "description": "",
+    "description": "An intense and fiery artwork that blends the coolness of blue with the warmth of yellow. Available as a print or oil painting, this piece will make a bold statement in any space.",
     "category": ["print", "oil painting"],
     "image": "pexels-steve-1585325.jpg",
     "variations": [
