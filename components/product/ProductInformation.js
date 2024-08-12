@@ -16,8 +16,8 @@ export default function ProductInformation({ productid }) {
 
   return (
     <>
-      <div className="px-5 sm:px-10 md:flex lg:px-24 lg:justify-center">
-        <div className="md:w-1/3 md:px-10">
+      <div className="px-5 sm:px-10 md:flex  md:justify-center">
+        <div className="md:w-1/2 md:px-10">
           <Image
             src={`/images/product/${product.image}`}
             width={200}
@@ -28,16 +28,18 @@ export default function ProductInformation({ productid }) {
         </div>
 
         <div className=" md:w-1/2 md:px-8 ">
-          <h4 className="font-medium text-xl py-2">{product.name}</h4>
+          <h4 className="font-medium text-xl py-2 md:text-2xl">
+            {product.name}
+          </h4>
+          <p className="md:py-4">{product.description}</p>
 
-          <div>Size</div>
-          <div className=""></div>
+          <div className="pt-2">Size</div>
 
           {product.variations.map((item) => {
             return (
               <div
                 onClick={() => setSize(item.size)}
-                className={`flex justify-between w-1/2 border px-3 py-2 cursor-pointer rounded my-2 ${
+                className={`flex justify-between w-full lg:w-1/2 border px-3 py-2 cursor-pointer rounded my-2 ${
                   size == item.size ? "bg-black text-white" : "bg-white"
                 }`}
               >
@@ -48,7 +50,7 @@ export default function ProductInformation({ productid }) {
             );
           })}
 
-          <p className="py-3">Quantity</p>
+          <p className="pt-3">Quantity</p>
           {/* button for quantity */}
           <div className="flex cursor-pointer border items-center w-full lg:w-1/2 justify-between py-1 rounded px-4">
             <div
