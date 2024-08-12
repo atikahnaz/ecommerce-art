@@ -42,6 +42,7 @@ export default function Checkout() {
               />
               <input placeholder="State" className=" border w-full px-3 py-2" />
               <input
+                type="number"
                 placeholder="Phone Number"
                 className=" border w-full px-3 py-2"
               />
@@ -61,7 +62,7 @@ export default function Checkout() {
             </select>
           </div>
 
-          <div className="md:flex-1">
+          <div className="md:flex-1 pt-8 md:pt-0">
             {/* order items */}
             <div className="px-5">
               <div className="flex justify-between pr-5">

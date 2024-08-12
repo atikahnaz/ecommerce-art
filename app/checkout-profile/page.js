@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Login() {
+export default function LoginPayment() {
   return (
     <>
       <div className="text-center px-8 mt-10  flex flex-col items-center">
@@ -33,7 +33,7 @@ export default function Login() {
 
           <div className="">
             <p className="pt-4">or</p>
-            <Link href="/">
+            <Link href="/Checkout">
               <div className="bg-black text-white py-2 rounded my-5 mx-3 max-w-96 ">
                 Continue as guest
               </div>
