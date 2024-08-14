@@ -147,7 +147,7 @@ export default function LoginPayment() {
 
           <div className="">
             <p className="pt-4">or</p>
-            <Link href="/Checkout">
+            <Link href="/checkout">
               <div className="bg-black text-white py-2 rounded my-5 mx-3 max-w-96 ">
                 Continue as guest
               </div>
