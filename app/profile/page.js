@@ -102,7 +102,9 @@ import Login from "@/components/auth/login";
 export default function Profile() {
   return (
     <>
-      <Login />
+      <div className="">
+        <Login />
+      </div>
     </>
   );
 }
