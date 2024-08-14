@@ -18,7 +18,9 @@ export default function RootLayout({ children }) {
       <body className={`${lora.className} flex flex-col min-h-screen  `}>
         <CartProvider>
           <Header className="fixed" />
-          <main className="flex-grow  pt-20 md:pt-28 lg:px-24">{children}</main>
+          <main className="flex-grow  pt-20 md:pt-28 px-5 md:px-10 lg:px-24">
+            {children}
+          </main>
           <Footer />
         </CartProvider>
       </body>
