@@ -34,6 +34,7 @@ export default function ProductCard({ product }) {
             </div>
 
             <Image
+              alt={product.name}
               src={cartAdd}
               width={20}
               height={20}

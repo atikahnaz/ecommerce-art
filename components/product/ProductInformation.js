@@ -35,9 +35,10 @@ export default function ProductInformation({ productid }) {
 
           <div className="pt-2">Size</div>
 
-          {product.variations.map((item) => {
+          {product.variations.map((item, index) => {
             return (
               <div
+                key={index}
                 onClick={() => setSize(item.size)}
                 className={`flex justify-between w-full lg:w-1/2 border px-3 py-2 cursor-pointer rounded my-2 ${
                   size == item.size ? "bg-black text-white" : "bg-white"

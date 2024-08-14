@@ -71,13 +71,14 @@ export default function Checkout() {
               </div>
 
               {items.map((item, index) => {
-                return item.variations.map((variation) => {
+                return item.variations.map((variation, index) => {
                   if (variation.quantity) {
                     return (
-                      <div className="flex py-4 border-b">
+                      <div key={index} className="flex py-4 border-b">
                         <div className="">
                           <Image
                             src={`/images/product/${item.image}`}
+                            alt={item.name}
                             width={100}
                             height={100}
                           />

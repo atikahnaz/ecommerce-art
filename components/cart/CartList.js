@@ -29,10 +29,10 @@ export default function CartList({ close, className }) {
         <div className="px-4 space-y-4 mb-4 ">
           {items.length > 0
             ? items.map((item, index) =>
-                item.variations.map((variation) => {
+                item.variations.map((variation, index) => {
                   if (variation.quantity) {
                     return (
-                      <div className="flex ">
+                      <div key={index} className="flex ">
                         <Image
                           src={`/images/product/${item.image}`}
                           width={150}
