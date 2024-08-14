@@ -50,20 +50,23 @@ export default function Login() {
 
   return (
     <>
-      <div className="text-center px-8 mt-10  flex flex-col items-center">
-        <div className="bg-slate-200 pt-4 rounded max-w-96">
+      <div className="text-center px-8 mt-10 flex flex-col mx-auto  max-w-96">
+        <div className="bg-slate-200 pt-4 rounded w-full">
           <div className="my-5">Log in to continue</div>
 
-          <div className="w-full">
-            <form className="space-y-5 mx-3" onSubmit={handleLogin}>
-              <input
-                name="email"
-                placeholder="Email"
-                className="w-full bg-slate-50 py-2 px-2"
-                onChange={handleChangeForm}
-              ></input>
+          <div className="w-full border px-5 ">
+            <form className="space-y-3 " onSubmit={handleLogin}>
+              <div className="bg-amber-700">
+                <input
+                  name="email"
+                  placeholder="Email"
+                  className="w-full bg-slate-50 py-2 px-2"
+                  onChange={handleChangeForm}
+                ></input>
+              </div>
+
               <div
-                className="text-end w-full text-xs  text-red-500"
+                className="text-end  w-full text-xs  text-red-500"
                 id="email-error"
               >
                 {errors.email && <p>{errors.email}</p>}

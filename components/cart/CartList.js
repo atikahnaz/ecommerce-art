@@ -121,7 +121,7 @@ export default function CartList({ close, className }) {
                 Clear Cart
               </div>
 
-              <Link href="/profile">
+              <Link href="/checkout-profile">
                 <div
                   className="bg-black mt-5 text-white text-center py-2 rounded-md"
                   onClick={viewCart}
