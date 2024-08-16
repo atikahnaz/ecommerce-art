@@ -45,7 +45,7 @@ export default function Signup() {
     if (formComplete) {
       try {
         const response = await fetch(
-          "http://localhost/Ecommerce_art/backend/auth/signup.inc.php",
+          "http://localhost/Ecommerce_art_backend/backend/auth/signup.inc.php",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -53,7 +53,7 @@ export default function Signup() {
           }
         );
         const data = await response.json();
-        console.log(data);
+
         console.log("Signup");
 
         console.log(data.status);

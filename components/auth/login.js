@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useRouter } from "next/navigation";
+import { UserContext } from "@/context/AuthContext";
 
 export default function Login() {
   const [formLogin, setFormLogin] = useState({
@@ -10,6 +12,8 @@ export default function Login() {
   });
 
   const [errors, setErrors] = useState({});
+  const router = useRouter();
+  const { login } = useContext(UserContext);
 
   const handleChangeForm = (e) => {
     setFormLogin({ ...formLogin, [e.target.name]: e.target.value });
@@ -31,8 +35,8 @@ export default function Login() {
     if (formComplete) {
       try {
         console.log("here");
-        const respose = await fetch(
-          "http://localhost/Ecommerce_art/backend/auth/login.inc.php",
+        const response = await fetch(
+          "http://localhost/Ecommerce_art_backend/backend/auth/login.inc.php",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -40,8 +44,18 @@ export default function Login() {
           }
         );
 
-        const data = await respose.json();
+        const data = await response.json();
+        if (data.status == true) {
+          localStorage.setItem("session_id", data.session_id);
+          console.log("Logged ", data.session_id);
+          router.push("/");
+        } else {
+          const errorBox = document.getElementById("invalid");
+          errorBox.textContent = data.message;
+        }
         console.log(data.message);
+        console.log(data.session_id);
+        login(data.user, data.session_id);
       } catch (error) {
         console.log("error login");
       }
@@ -82,6 +96,10 @@ export default function Login() {
               <div className="text-end text-xs   text-red-500" id="pwd-error">
                 {errors.pwd && <p>{errors.pwd}</p>}
               </div>
+              <div
+                className="text-center text-xs   text-red-500"
+                id="invalid"
+              ></div>
 
               <button className="w-full py-2 text-white bg-black rounded">
                 Log in

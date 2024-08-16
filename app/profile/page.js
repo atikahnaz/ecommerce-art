@@ -96,15 +96,17 @@
 //     </>
 //   );
 // }
-
+"use client";
 import Login from "@/components/auth/login";
+import { UserContext } from "@/context/AuthContext";
+import { useContext } from "react";
 
 export default function Profile() {
+  const { user } = useContext(UserContext);
+
   return (
     <>
-      <div className="">
-        <Login />
-      </div>
+      <div className="">{user ? "welcome " + user.name : <Login />}</div>
     </>
   );
 }

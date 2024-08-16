@@ -29,7 +29,7 @@ export default function Header({ className }) {
   return (
     <>
       <div
-        className={`flex z-40 justify-between w-screen px-10 py-8 md:py-10 md:pr-16 lg:px-24 bg-white ${className} `}
+        className={`flex z-40 justify-between  w-screen px-10 py-8 md:py-10 md:pr-16 lg:px-24 bg-white ${className} `}
       >
         {viewCart && (
           <CartList
@@ -37,7 +37,8 @@ export default function Header({ className }) {
             className="w-5/6 absolute top-14 right-1 max-h-[calc(100vh-4rem)]  overflow-y-scroll"
           />
         )}
-        <div className="flex items-center ">
+
+        <div className="flex items-center  md:w-full">
           {viewMenu && <MenuDrop close={closeMenu} className="" />}
 
           <Image
@@ -46,7 +47,8 @@ export default function Header({ className }) {
             alt="menu"
             className="cursor-pointer md:hidden"
           />
-          <div className="hidden md:flex space-x-5 font-normal text-lg">
+
+          <div className="hidden md:flex space-x-5 md:space-x-10 font-normal text-lg">
             <Link href="/collection">
               <div>Collection</div>
             </Link>
@@ -54,11 +56,12 @@ export default function Header({ className }) {
             <div>Gallery</div>
           </div>
 
-          <div className="pl-4 md:text-xl">
+          <div className="pl-4 md:text-xl md:flex-1 md:text-center  ">
             <Link href="/">ART STORE</Link>
           </div>
         </div>
 
+        {/* cart and profile */}
         <div className="flex items-center lg:pr-4">
           <div className="pr-4 md:pr-8">
             <Link href="/profile">
