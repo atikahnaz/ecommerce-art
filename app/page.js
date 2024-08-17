@@ -13,7 +13,7 @@ export default function Home() {
     <main>
       <div className="relative ">
         {/* <Image src="/images/hero-image.jpg" alt="hero" width={500} height={500} /> */}
-        <Image src={heroImage} alt="hero" className=" mt-5 " />
+        <Image src={heroImage} alt="hero" className=" " />
         <div className="absolute  top-1/3 font-medium  text-sm md:text-lg lg:text-xl xl:text-2xl w-1/2 ml-4 lg:ml-8 ">
           <div>Design your room with our collection</div>
           <Link href="/collection">

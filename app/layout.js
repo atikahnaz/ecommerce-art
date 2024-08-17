@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
         <UserProvider>
           <CartProvider>
             <Header className="fixed" />
-            <main className="flex-grow  pt-20 md:pt-28 px-5 md:px-10 lg:px-24">
+            <main className="flex-grow mt-4  pt-20 md:pt-28 px-5 md:px-10 lg:px-24">
               {children}
             </main>
             <Footer />

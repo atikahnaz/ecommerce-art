@@ -8,7 +8,7 @@ export default function Collection() {
   return (
     <>
       <div className="px-5">
-        <h1 className="py-3 lg:px-5">Collection</h1>
+        <h1 className=" lg:px-5">Collection</h1>
         <ProductList products={products} />
       </div>
     </>
