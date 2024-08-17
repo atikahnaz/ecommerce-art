@@ -1,16 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
+import { UserContext } from "@/context/AuthContext";
+import Checkout from "../Checkout/page";
 
 export default function LoginPayment() {
+  const { user } = useContext(UserContext);
+
+  return <> {user ? <Checkout /> : <FormCheckout />}</>;
+}
+
+function FormCheckout() {
   const [formLogin, setFormLogin] = useState({
     email: "",
     pwd: "",
   });
-  const router = useRouter();
 
+  const router = useRouter();
   const [errors, setErrors] = useState({});
 
   const handleChangeForm = (e) => {
@@ -56,9 +64,9 @@ export default function LoginPayment() {
       }
     }
   };
-
   return (
     <>
+      {/* login, create account, guest form */}
       <div className="text-center px-8 mt-10 flex flex-col mx-auto  max-w-96">
         <div className="bg-slate-200 pt-4 rounded w-full">
           <div className="my-5">Log in to continue</div>
