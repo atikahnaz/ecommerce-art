@@ -48,13 +48,15 @@ export default function Login() {
         if (data.status == true) {
           localStorage.setItem("session_id", data.session_id);
           console.log("Logged ", data.session_id);
-          router.push("/");
+          router.push("/profile");
         } else {
           const errorBox = document.getElementById("invalid");
           errorBox.textContent = data.message;
         }
         console.log(data.message);
         console.log(data.session_id);
+
+        // useContext to save data.user to user state
         login(data.user, data.session_id);
       } catch (error) {
         console.log("error login");
