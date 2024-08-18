@@ -29,7 +29,7 @@ export default function Header({ className }) {
   return (
     <>
       <div
-        className={`flex z-40 justify-between  w-screen px-10 py-8 md:py-10 md:pr-16 lg:px-24 bg-white ${className} `}
+        className={`flex z-40 justify-between  w-screen px-5 py-8 md:py-10 md:pr-16 md:px-10 lg:px-24 bg-white ${className} `}
       >
         {viewCart && (
           <CartList
