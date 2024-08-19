@@ -1,5 +1,6 @@
 "use client";
-import { useState, createContext, useEffect } from "react";
+import { useState, createContext, useEffect, useContext } from "react";
+import { UserContext } from "./AuthContext";
 
 //can export more than one function
 
@@ -8,6 +9,39 @@ export const CartItems = createContext();
 export const CartProvider = ({ children }) => {
   const [items, setItems] = useState([]); // get items from localstorage
   const [total, setTotal] = useState();
+
+  // user login
+  const { user } = useContext(UserContext);
+
+  // if user sign in, fetch cart items from database
+
+  useEffect(() => {
+    if (user) {
+      console.log(user.id);
+      const fetchItem = async () => {
+        try {
+          const response = await fetch(
+            "http://localhost/Ecommerce_art_backend/backend/item/get-items.inc.php",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ user_id: user.id }),
+            }
+          );
+          const data = await response.json();
+          // consolelog data from database
+          console.log(data.status);
+          console.log(data.message);
+          console.log("here");
+          console.log(data.items);
+        } catch (error) {
+          console.log("error retrieve items");
+        }
+      };
+      console.log("fetchitem");
+      fetchItem();
+    }
+  }, [user]);
 
   useEffect(() => {
     const totalQuantity = items.reduce((total, item) => {
