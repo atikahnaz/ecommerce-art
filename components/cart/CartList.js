@@ -1,6 +1,7 @@
 "use client";
 import { useContext, useState } from "react";
 import { CartItems } from "@/context/CartContext";
+import { UserContext } from "@/context/AuthContext";
 import Image from "next/image";
 import x from "../../public/images/icon/bx-x.svg";
 import Link from "next/link";
@@ -8,14 +9,18 @@ import Link from "next/link";
 export default function CartList({ close, className }) {
   const { items, removeitem, clearcart, addItem, removefromcart, total } =
     useContext(CartItems);
+
   const viewCart = () => {
     close(false);
   };
+
+  const { user } = useContext(UserContext);
 
   //const cartItems = useContext();
 
   return (
     <>
+      {user ? console.log("user login") : console.log("not login")}
       <div
         className={` shadow-lg pt-4 bg-slate-50 md:w-1/2 lg:w-1/3 z-20  ${className}`}
       >

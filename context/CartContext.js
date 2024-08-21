@@ -71,20 +71,8 @@ export const CartProvider = ({ children }) => {
     console.log(items);
   }, [items]);
 
+  // set total when items changed
   useEffect(() => {
-    // if (user) {
-    //   console.log("user item");
-    // } else {
-    //   console.log("user item not login");
-    //   const totalQuantity = items.reduce((total, item) => {
-    //     const totalItem = item.variations.reduce((sumItem, variation) => {
-    //       return sumItem + (variation.quantity || 0);
-    //     }, 0);
-
-    //     return totalItem + total;
-    //   }, 0);
-    //   setTotal(totalQuantity);
-    // }
     const totalQuantity = items.reduce((total, item) => {
       const totalItem = item.variations.reduce((sumItem, variation) => {
         return sumItem + (variation.quantity || 0);
@@ -184,7 +172,7 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const removeitem = (product, quantity, size) => {
+  const removeitem = async (product, quantity, size) => {
     const itemExist = items.find((item) => item.id == product.id);
     console.log(itemExist);
     console.log(quantity);
@@ -210,9 +198,39 @@ export const CartProvider = ({ children }) => {
         })
       );
     }
+
+    // if user is login, remove and update item in database
+    if (user) {
+      try {
+        const response = await fetch(
+          "http://localhost/Ecommerce_art_backend/backend/item/remove-items.inc.php",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              user_id: user.id,
+              product_id: product.id,
+              size: size,
+              quantity: quantity,
+            }),
+          }
+        );
+
+        const data = await response.json();
+        if (data.status) {
+          console.log("item remove");
+          console.log(data.message);
+        } else {
+          console.log("item not remove");
+          console.log(data.message);
+        }
+      } catch (error) {
+        console.log("error to remove item");
+      }
+    }
   };
 
-  const removefromcart = (product, size) => {
+  const removefromcart = async (product, size) => {
     const selectedItem = items.find((item) => item.id == product.id);
     if (selectedItem) {
       setItems(
@@ -233,10 +251,66 @@ export const CartProvider = ({ children }) => {
         })
       );
     }
+
+    if (user) {
+      try {
+        const response = await fetch(
+          "http://localhost/Ecommerce_art_backend/backend/item/remove-items.inc.php",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              user_id: user.id,
+              product_id: product.id,
+              size: size,
+            }),
+          }
+        );
+
+        const data = await response.json();
+        if (data.status) {
+          console.log("item remove");
+          console.log(data.message);
+        } else {
+          console.log("item not remove");
+          console.log(data.message);
+        }
+      } catch (error) {
+        console.log("error to remove item");
+      }
+    }
   };
 
-  const clearcart = () => {
+  const clearcart = async () => {
     setItems([]);
+    if (user) {
+      try {
+        const response = await fetch(
+          "http://localhost/Ecommerce_art_backend/backend/item/remove-items.inc.php",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              user_id: user.id,
+              product_id: null,
+              size: null,
+              quantity: null,
+            }),
+          }
+        );
+
+        const data = await response.json();
+        if (data.status) {
+          console.log("item remove");
+          console.log(data.message);
+        } else {
+          console.log("item not remove");
+          console.log(data.message);
+        }
+      } catch (error) {
+        console.log("error to remove item");
+      }
+    }
   };
 
   return (
