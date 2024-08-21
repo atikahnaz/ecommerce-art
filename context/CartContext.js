@@ -1,6 +1,7 @@
 "use client";
 import { useState, createContext, useEffect, useContext } from "react";
 import { UserContext } from "./AuthContext";
+import productInformation from "../public/data/products.json";
 
 //can export more than one function
 
@@ -34,6 +35,29 @@ export const CartProvider = ({ children }) => {
           console.log(data.message);
           console.log("here");
           console.log(data.items);
+
+          // setItem to data from database
+          // format the data to match the local storage format
+
+          // map data
+          const formatItem = data.items.map((item, index) => {
+            const productInfoExist = productInformation.find(
+              (product) => product.id == item.product_id
+            );
+
+            if (productInfoExist) {
+              return {
+                ...productInfoExist,
+                variations: productInfoExist.variations.map((variation) => {
+                  if (variation.size == item.size) {
+                    return { ...variation, quantity: item.quantity };
+                  }
+                  return variation;
+                }),
+              };
+            }
+          });
+          setItems(formatItem);
         } catch (error) {
           console.log("error retrieve items");
         }
@@ -44,6 +68,23 @@ export const CartProvider = ({ children }) => {
   }, [user]);
 
   useEffect(() => {
+    console.log(items);
+  }, [items]);
+
+  useEffect(() => {
+    // if (user) {
+    //   console.log("user item");
+    // } else {
+    //   console.log("user item not login");
+    //   const totalQuantity = items.reduce((total, item) => {
+    //     const totalItem = item.variations.reduce((sumItem, variation) => {
+    //       return sumItem + (variation.quantity || 0);
+    //     }, 0);
+
+    //     return totalItem + total;
+    //   }, 0);
+    //   setTotal(totalQuantity);
+    // }
     const totalQuantity = items.reduce((total, item) => {
       const totalItem = item.variations.reduce((sumItem, variation) => {
         return sumItem + (variation.quantity || 0);
@@ -52,18 +93,20 @@ export const CartProvider = ({ children }) => {
       return totalItem + total;
     }, 0);
     setTotal(totalQuantity);
-  }, [items]);
+  }, [items, user]);
 
   console.log(items);
 
   // function to add items to cart
-  const addItem = (product, quantity, size) => {
+  const addItem = async (product, quantity, size) => {
+    let price;
     const itemExist = items.find((item) => item.id == product.id);
     console.log(itemExist);
     console.log(quantity);
     console.log(size);
+    console.log(product.variations[0].price);
     if (itemExist) {
-      // iterate each item
+      // iterate each items
       // for each item iterate the variations
       // find the same size
       // if size and quantity exist, add quantity
@@ -76,6 +119,7 @@ export const CartProvider = ({ children }) => {
               ...item,
               variations: item.variations.map((variation) => {
                 if (variation.size == size) {
+                  price = variation.price;
                   return {
                     ...variation,
                     quantity: (variation.quantity || 0) + quantity, // add quantity if it doesnt exist
@@ -89,34 +133,17 @@ export const CartProvider = ({ children }) => {
         })
       );
 
-      // setItems(
-      //   items.map((item) => {
-      //     return item.variations.map((variation) => {
-      //       variation.size == size && variation.quantity
-      //         ? { ...variation, quantity: variation.quantity + quantity }
-      //         : variation;
-      //     });
-      //   })
-      // );
       console.log("items not new");
-
-      //before
-      // setItems(
-      //   items.map((item) =>
-      //     item.id == product.id
-      //       ? { ...item, quantity: item.quantity + quantity }
-      //       : item
-      //   )
-      // );
     } else {
       console.log("item new");
-      //setItems([...items, { ...product, quantity: quantity }]);
+
       setItems([
         ...items,
         {
           ...product,
           variations: product.variations.map((variation) => {
             if (variation.size == size) {
+              price = variation.price;
               return { ...variation, quantity: quantity };
             }
             return variation;
@@ -124,23 +151,40 @@ export const CartProvider = ({ children }) => {
         },
       ]);
     }
+    console.log(price);
+
+    //send data to the backend database if user is login
+    if (user) {
+      try {
+        console.log("login add item");
+        const response = await fetch(
+          "http://localhost/Ecommerce_art_backend/backend/item/update-cart.inc.php",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              user_id: user.id,
+              product_id: product.id,
+              size: size,
+              quantity: quantity,
+              price: price,
+            }),
+          }
+        );
+
+        const data = await response.json();
+        if (data.status) {
+          console.log("cart updated");
+        } else {
+          console.log("cart failed to update");
+        }
+      } catch (error) {
+        console.log("error");
+      }
+    }
   };
 
   const removeitem = (product, quantity, size) => {
-    // const selectedItem = items.find((item) => item.id == product.id);
-
-    // if (selectedItem.quantity == 1) {
-    //   setItems(items.filter((item) => item.id != selectedItem.id));
-    // } else {
-    //   setItems(
-    //     items.map((item) =>
-    //       item.id == selectedItem.id
-    //         ? { ...item, quantity: item.quantity - 1 }
-    //         : item
-    //     )
-    //   );
-    // }
-
     const itemExist = items.find((item) => item.id == product.id);
     console.log(itemExist);
     console.log(quantity);
