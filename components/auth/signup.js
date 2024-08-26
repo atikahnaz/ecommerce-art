@@ -45,7 +45,7 @@ export default function Signup() {
     if (formComplete) {
       try {
         const response = await fetch(
-          "http://localhost/Ecommerce_art_backend/backend/auth/signup.inc.php",
+          "http://artstore.infinityfreeapp.com/backend/auth/signup.inc.php",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

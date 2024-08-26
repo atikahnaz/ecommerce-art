@@ -8,19 +8,33 @@ export const UserProvider = ({ children }) => {
   const [sessionId, setSessionId] = useState(null);
 
   useEffect(() => {
-    console.log(user);
-    console.log(sessionId);
-  }, [user]);
+    // Retrieve user and session ID from localStorage
+    const storedUser = localStorage.getItem("user");
+    const storedSessionId = localStorage.getItem("sessionId");
+
+    if (storedUser && storedSessionId) {
+      setUser(JSON.parse(storedUser));
+      setSessionId(storedSessionId);
+    }
+  }, []);
 
   const login = (userdata, userSession) => {
     setUser(userdata);
     setSessionId(userSession);
     console.log("user login start");
+
+    // Store user and session ID in localStorage
+    localStorage.setItem("user", JSON.stringify(userdata));
+    localStorage.setItem("sessionId", userSession);
   };
 
   const logout = () => {
     setUser(null);
     setSessionId(null);
+
+    // Remove user and session ID from localStorage
+    localStorage.removeItem("user");
+    localStorage.removeItem("sessionId");
   };
 
   return (

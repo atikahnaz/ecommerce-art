@@ -28,15 +28,13 @@ export default function Login() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    console.log("hadnelogin");
     setErrors(validateForm());
 
     const formComplete = formLogin.email && formLogin.pwd;
     if (formComplete) {
       try {
-        console.log("here");
         const response = await fetch(
-          "http://localhost/Ecommerce_art_backend/backend/auth/login.inc.php",
+          "http://artstore.infinityfreeapp.com/backend/auth/login.inc.php",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -47,19 +45,17 @@ export default function Login() {
         const data = await response.json();
         if (data.status == true) {
           localStorage.setItem("session_id", data.session_id);
-          console.log("Logged ", data.session_id);
           router.push("/profile");
         } else {
           const errorBox = document.getElementById("invalid");
           errorBox.textContent = data.message;
         }
-        console.log(data.message);
-        console.log(data.session_id);
 
         // useContext to save data.user to user state
         login(data.user, data.session_id);
       } catch (error) {
         console.log("error login");
+        console.log(error);
       }
     }
   };
