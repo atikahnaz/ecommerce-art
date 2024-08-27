@@ -34,7 +34,7 @@ export default function Login() {
     if (formComplete) {
       try {
         const response = await fetch(
-          "http://artstore.infinityfreeapp.com/backend/auth/login.inc.php",
+          "https://artstore.infinityfreeapp.com/backend/auth/login.inc.php",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

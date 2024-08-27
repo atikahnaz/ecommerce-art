@@ -18,7 +18,7 @@ export const CartProvider = ({ children }) => {
   const fetchItem = async () => {
     try {
       const response = await fetch(
-        "http://artstore.infinityfreeapp.com/backend/item/get-items.inc.php",
+        "https://artstore.infinityfreeapp.com/backend/item/get-items.inc.php",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -128,7 +128,7 @@ export const CartProvider = ({ children }) => {
     if (user) {
       try {
         const response = await fetch(
-          "http://artstore.infinityfreeapp.com/backend/item/update-cart.inc.php",
+          "https://artstore.infinityfreeapp.com/backend/item/update-cart.inc.php",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -184,7 +184,7 @@ export const CartProvider = ({ children }) => {
     if (user) {
       try {
         const response = await fetch(
-          "http://artstore.infinityfreeapp.com/backend/item/remove-items.inc.php",
+          "https://artstore.infinityfreeapp.com/backend/item/remove-items.inc.php",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -235,7 +235,7 @@ export const CartProvider = ({ children }) => {
     if (user) {
       try {
         const response = await fetch(
-          "http://artstore.infinityfreeapp.com/backend/item/remove-items.inc.php",
+          "https://artstore.infinityfreeapp.com/backend/item/remove-items.inc.php",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -265,7 +265,7 @@ export const CartProvider = ({ children }) => {
     if (user) {
       try {
         const response = await fetch(
-          "http://artstore.infinityfreeapp.com/backend/item/remove-items.inc.php",
+          "https://artstore.infinityfreeapp.com/backend/item/remove-items.inc.php",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
